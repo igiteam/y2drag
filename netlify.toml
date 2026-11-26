@@ -1,0 +1,43 @@
+# --- Build ---
+[build]
+  command = "npm run build"
+  publish = "build"
+  edge_functions = "netlify/edge-functions"
+
+[build.environment]
+  # put real env vars here, e.g.
+  # NODE_VERSION = "20"
+  # NPM_FLAGS = "--legacy-peer-deps"
+
+[build.processing]
+  # optional: leave empty or remove entirely if you don't need it
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+# --- Edge Functions ---
+[[edge_functions]]
+  path = "/*"
+  function = "dynamic-meta"
+
+# --- Functions (optional, only if you actually have serverless functions) ---
+# [functions]
+#   directory = "netlify/functions"
+#   node_bundler = "esbuild"
+
+# --- Redirects / SPA fallback ---
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

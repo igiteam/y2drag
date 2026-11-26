@@ -1,19 +1,11 @@
-# --- Build ---
 [build]
-  command = "npm run build"
-  publish = "build"
+  publish = "."
   edge_functions = "netlify/edge-functions"
 
-[build.environment]
-  NODE_VERSION = "20"
-  # NPM_FLAGS = "--legacy-peer-deps"
-
-# --- Edge Functions ---
 [[edge_functions]]
   path = "/*"
   function = "dynamic-meta"
 
-# --- Redirects / SPA fallback ---
 [[redirects]]
   from = "/*"
   to = "/index.html"
